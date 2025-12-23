@@ -263,8 +263,30 @@ function submitWordleGuess() {
     }
 }
 
+// Preload images
+function preloadAssets() {
+    const images = ['Eliza.png', 'gherkin.png', 'lives.png'];
+    images.forEach(src => {
+        const img = new Image();
+        img.src = src;
+    });
+    
+    // Preload audio files by loading them
+    const eatSound = document.getElementById('eat-sound');
+    const damageSound = document.getElementById('damage-sound');
+    if (eatSound) {
+        eatSound.load();
+    }
+    if (damageSound) {
+        damageSound.load();
+    }
+}
+
 // Initialize audio
 initAudio();
+
+// Preload all assets
+preloadAssets();
 
 // Initialize Wordle
 initWordle();
