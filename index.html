@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Eliza - Pickle Catcher</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Opening Screen - Wordle -->
+    <div id="opening-screen" class="screen">
+        <div class="wordle-container">
+            <h1 class="wordle-title">happy birthday eliza.</h1>
+            <div id="wordle-grid" class="wordle-grid"></div>
+            <div id="wordle-keyboard" class="wordle-keyboard"></div>
+            <div id="wordle-message" class="wordle-message"></div>
+            <button id="play-button" class="play-button hidden">Play</button>
+        </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen" class="screen hidden">
+        <div id="score-display">Score: <span id="score">0</span></div>
+        <div id="lives-display">
+            <img class="life-icon" src="lives.png" alt="Life">
+            <img class="life-icon" src="lives.png" alt="Life">
+            <img class="life-icon" src="lives.png" alt="Life">
+        </div>
+        <div id="game-area">
+            <div id="gherkins-container"></div>
+            <div id="eliza-container">
+                <img id="eliza" src="Eliza.png" alt="Eliza">
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Over Screen -->
+    <div id="game-over-screen" class="screen hidden">
+        <div class="game-over-content">
+            <h2>Game Over!</h2>
+            <p>Final Score: <span id="final-score">0</span></p>
+            <button id="play-again-button" class="play-button">Play Again</button>
+        </div>
+    </div>
+
+    <!-- Hidden audio element for eat sound -->
+    <audio id="eat-sound" preload="auto">
+        <source src="eating sound effect.m4a" type="audio/mp4">
+    </audio>
+
+    <!-- Hidden audio element for damage sound -->
+    <audio id="damage-sound" preload="auto">
+        <source src="damage.m4a" type="audio/mp4">
+    </audio>
+
+    <script src="game.js"></script>
+</body>
+</html>
+
