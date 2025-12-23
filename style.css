@@ -1,0 +1,332 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+    background: #ff00ff;
+    color: #00ff41;
+    height: 100vh;
+    width: 100vw;
+}
+
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Opening Screen - Wordle */
+.wordle-container {
+    text-align: center;
+    animation: fadeIn 1s ease-in;
+    padding: 20px;
+    max-width: 600px;
+    width: 100%;
+}
+
+.wordle-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-transform: lowercase;
+    letter-spacing: 0.1em;
+    color: #00ff41;
+    text-shadow: none;
+}
+
+.wordle-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin-bottom: 30px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wordle-cell {
+    aspect-ratio: 1;
+    border: 3px solid #00ff41;
+    background: #ff00ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #00ff41;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.wordle-cell.filled {
+    border-color: #00ff41;
+}
+
+.wordle-cell.correct {
+    background: #00ff41;
+    color: #ff00ff;
+}
+
+.wordle-cell.present {
+    background: #ffff00;
+    color: #ff00ff;
+}
+
+.wordle-cell.absent {
+    background: #808080;
+    color: #ff00ff;
+}
+
+.wordle-keyboard {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.keyboard-row {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+}
+
+.keyboard-key {
+    padding: 12px 16px;
+    background: #00ff41;
+    color: #ff00ff;
+    border: 3px solid #00ff41;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+    min-width: 40px;
+}
+
+.keyboard-key:hover {
+    background: #ff00ff;
+    color: #00ff41;
+}
+
+.keyboard-key.wide {
+    padding: 12px 24px;
+    min-width: 80px;
+}
+
+.keyboard-key.correct {
+    background: #00ff41;
+    color: #ff00ff;
+}
+
+.keyboard-key.present {
+    background: #ffff00;
+    color: #ff00ff;
+}
+
+.keyboard-key.absent {
+    background: #808080;
+    color: #ff00ff;
+}
+
+.wordle-message {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #00ff41;
+    margin-bottom: 20px;
+    min-height: 30px;
+}
+
+.play-button {
+    font-size: 2rem;
+    padding: 1rem 3rem;
+    background: #00ff41;
+    color: #ff00ff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    box-shadow: none;
+    font-weight: bold;
+}
+
+.play-button:hover {
+    transform: scale(1.1);
+    box-shadow: none;
+}
+
+.play-button:active {
+    transform: scale(0.95);
+}
+
+/* Game Screen */
+#game-screen {
+    background: #00ff41;
+    flex-direction: column;
+}
+
+#score-display {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    font-weight: bold;
+    z-index: 100;
+    color: #ff00ff;
+    text-shadow: none;
+}
+
+#lives-display {
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.life-icon {
+    width: 40px;
+    height: 40px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.life-icon.hidden {
+    opacity: 0;
+    transform: scale(0);
+}
+
+/* Game Over Screen */
+.game-over-content {
+    text-align: center;
+    animation: fadeIn 1s ease-in;
+}
+
+.game-over-content h2 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #00ff41;
+    text-shadow: none;
+}
+
+.game-over-content p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: #00ff41;
+}
+
+#game-area {
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    height: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+#gherkins-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.gherkin {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    background-image: url('pickled items/gherkin.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: fall linear;
+    z-index: 10;
+}
+
+@keyframes fall {
+    from {
+        transform: translateY(-90px) rotate(0deg);
+    }
+    to {
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+
+#eliza-container {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 300px;
+    z-index: 50;
+    transition: left 0.1s linear;
+}
+
+#eliza {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: none;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    .opening-content h1 {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .play-button {
+        font-size: 1.5rem;
+        padding: 0.8rem 2rem;
+    }
+    
+    #score-display {
+        font-size: 1.5rem;
+    }
+    
+    #eliza-container {
+        width: 150px;
+        height: 225px;
+    }
+    
+    .gherkin {
+        width: 70px;
+        height: 70px;
+    }
+}
+
