@@ -1,3 +1,8 @@
+// Detect if mobile device
+function isMobile() {
+    return window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
 // Game state
 let gameState = {
     score: 0,
@@ -314,12 +319,13 @@ function startGame() {
     gameScreen.classList.remove('hidden');
     gameOverScreen.classList.add('hidden');
     
-    // Reset game state
+    // Reset game state - higher speed on mobile to compensate for narrower play area
+    const mobileSpeedMultiplier = isMobile() ? 1.5 : 1.0;
     gameState.score = 0;
     gameState.lives = 3;
     gameState.isPlaying = true;
-    gameState.fallSpeed = 1.2;
-    gameState.spawnRate = 1200;
+    gameState.fallSpeed = 1.2 * mobileSpeedMultiplier;
+    gameState.spawnRate = 1200 / mobileSpeedMultiplier;
     gameState.lastSpawn = Date.now();
     gameState.gherkins = [];
     gameState.lastScoreCheck = 0;

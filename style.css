@@ -35,6 +35,9 @@ body {
     padding: 20px;
     max-width: 600px;
     width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    margin: 0 auto;
 }
 
 .wordle-title {
@@ -49,11 +52,11 @@ body {
 .wordle-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 8px;
-    margin-bottom: 30px;
+    gap: 6px;
+    margin: 0 auto 30px;
+    width: min(90vw, 400px);
     max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
+    box-sizing: border-box;
 }
 
 .wordle-cell {
@@ -68,6 +71,8 @@ body {
     color: #00ff41;
     text-transform: uppercase;
     transition: all 0.3s ease;
+    width: 100%;
+    min-width: 0;
 }
 
 .wordle-cell.filled {
@@ -93,29 +98,32 @@ body {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    margin-bottom: 20px;
+    margin: 0 auto 20px;
+    width: min(95vw, 500px);
     max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
+    box-sizing: border-box;
 }
 
 .keyboard-row {
     display: flex;
     gap: 6px;
     justify-content: center;
+    flex-wrap: nowrap;
 }
 
 .keyboard-key {
-    padding: 12px 16px;
+    padding: 12px 8px;
     background: #00ff41;
     color: #ff00ff;
     border: 3px solid #00ff41;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: bold;
     cursor: pointer;
     text-transform: uppercase;
     transition: all 0.2s ease;
-    min-width: 40px;
+    flex: 1 1 0;
+    min-width: 0;
+    box-sizing: border-box;
 }
 
 .keyboard-key:hover {
@@ -305,9 +313,42 @@ body {
 
 /* Mobile optimizations */
 @media (max-width: 768px) {
-    .opening-content h1 {
-        font-size: 2.5rem;
-        margin-bottom: 2rem;
+    .wordle-container {
+        padding: 10px 5px;
+    }
+    
+    .wordle-title {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+    
+    .wordle-grid {
+        width: min(95vw, 350px);
+        gap: 4px;
+    }
+    
+    .wordle-cell {
+        font-size: 1.5rem;
+        border-width: 2px;
+    }
+    
+    .wordle-keyboard {
+        width: min(98vw, 480px);
+        gap: 6px;
+    }
+    
+    .keyboard-row {
+        gap: 4px;
+    }
+    
+    .keyboard-key {
+        padding: 10px 4px;
+        font-size: 0.75rem;
+        border-width: 2px;
+    }
+    
+    .keyboard-key.wide {
+        flex: 1.5 1 0;
     }
     
     .play-button {
