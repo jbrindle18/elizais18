@@ -24,3 +24,4 @@ This game is hosted on GitHub Pages. To deploy your own version:
 3. Select "Deploy from a branch" → "main" → "/ (root)"
 4. Your game will be live at `https://[your-username].github.io/[repository-name]`
 
+
